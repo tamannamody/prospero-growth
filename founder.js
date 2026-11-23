@@ -27,7 +27,8 @@ $$('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 5) * 80 + 'ms
 $$('[data-count]').forEach(el => onView(el, () => {
   if (reduce) return;
   const end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '', t0 = performance.now();
-  const tick = t => { const k = Math.min(1, (t - t0) / 1300); el.textContent = pre + Math.round(end * (1 - Math.pow(1 - k, 3))) + suf; if (k < 1) requestAnimationFrame(tick); };
+  const dec = String(end).includes('.') ? 1 : 0;
+  const tick = t => { const k = Math.min(1, (t - t0) / 1300); el.textContent = pre + (end * (1 - Math.pow(1 - k, 3))).toFixed(dec) + suf; if (k < 1) requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
 }, .6));
 

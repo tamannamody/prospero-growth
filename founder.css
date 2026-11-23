@@ -314,3 +314,61 @@
 .bcard p{color:var(--mu);font-size:14px}
 @media (max-width:980px){.ledgrid{grid-template-columns:1fr}.braingrid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.braingrid{grid-template-columns:1fr}.wmk{font-size:24px}}
+/* bento results */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.bx{border-radius:24px;padding:22px;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.12);position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.bx:hover{transform:translateY(-5px);border-color:var(--y)}
+.bx.big{grid-column:span 2;grid-row:span 2;background:linear-gradient(150deg,rgba(248,203,70,.16),rgba(255,255,255,.04))}
+.bxhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.nums.n3{grid-template-columns:repeat(3,1fr);gap:14px}
+.nums.n1{grid-template-columns:1fr}
+.nums div{background:rgba(0,0,0,.22);border-radius:16px;padding:14px}
+.nums strong{display:block;font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(28px,3vw,40px);line-height:1;color:var(--y)}
+.bx.big .nums strong{font-size:clamp(34px,4vw,56px)}
+.nums span{display:block;font-size:12.5px;color:#cfe3da;margin-top:6px;font-weight:600}
+.bxtag{margin-top:12px;font-size:12.5px;font-weight:700;color:var(--gd);background:var(--y);border-radius:20px;padding:4px 11px;display:inline-block}
+.bx.riga{background:linear-gradient(150deg,rgba(232,102,74,.25),rgba(255,255,255,.04))}
+.led{display:none}
+.brainrow{margin-top:44px}
+.bpills{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.bp{display:flex;gap:12px;align-items:center;background:#fff;color:var(--ink);border-radius:18px;padding:14px 16px}
+.bp b{font-size:26px;animation:bob 3s ease-in-out infinite}
+.bp strong{display:block;font-family:'Bricolage Grotesque';font-size:16px}
+.bp span{font-size:12.5px;color:var(--mu);font-weight:600}
+/* work cards */
+.work2{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-top:22px}
+.wk{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--sh);transition:transform .3s}
+.wk:hover{transform:translateY(-6px)}
+.wkimg{position:relative;min-height:240px;background:#111}
+.wkimg img{width:100%;height:100%;object-fit:cover;display:block}
+.wkbadge{position:absolute;left:10px;bottom:10px;background:var(--y);color:var(--gd);font-weight:800;font-size:12px;border-radius:20px;padding:5px 10px}
+.rigart{background:radial-gradient(circle at 30% 30%,#f6d6c8,#E8664A 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+.rigart span{font-family:'Bricolage Grotesque';font-weight:800;font-size:64px;letter-spacing:-.03em}
+.rigart small{font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:11px}
+.wkbody{padding:20px;display:flex;flex-direction:column;gap:6px}
+.wkbody h3{font-size:24px}
+.wknums{display:grid;gap:8px;margin:6px 0}
+.wknums div{display:flex;align-items:baseline;gap:8px}
+.wknums strong{font-family:'Bricolage Grotesque';font-weight:800;font-size:24px;color:var(--g)}
+.wknums span{font-size:13px;color:var(--mu);font-weight:600}
+.wklink{margin-top:auto;font-weight:800;color:var(--c)}
+.wk.riga{grid-template-columns:.8fr 1fr}
+@media (max-width:980px){
+  .bento{grid-template-columns:1fr 1fr}
+  .bx.big{grid-column:1/-1;grid-row:auto}
+  .bpills{grid-template-columns:1fr 1fr}
+  .work2{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .bento{grid-template-columns:1fr}
+  .nums.n3{grid-template-columns:1fr 1fr}
+  .bpills{grid-template-columns:1fr}
+  .wk,.wk.riga{grid-template-columns:1fr}
+  .wkimg{min-height:200px}
+}
+.bx.big{grid-row:auto}
+.bento{grid-auto-flow:dense}
+.bx.gini{background:linear-gradient(150deg,rgba(127,184,160,.22),rgba(255,255,255,.04))}
+.tagw{display:inline-block;align-self:flex-start;background:var(--cl);color:#b23b22;font-weight:800;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-radius:20px;padding:4px 11px}
+.wksub{font-size:14px;color:var(--mu)}
