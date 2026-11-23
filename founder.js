@@ -157,7 +157,7 @@ if (consoleEl) {
   const paint = pane => {
     $$('.viz-line', pane).forEach(renderLine); $$('.viz-dots', pane).forEach(renderDots);
     $$('.viz-funnel', pane).forEach(renderFunnel); $$('.viz-ring', pane).forEach(renderRing);
-    $$('.kpis div, .viz-path span', pane).forEach(x => { x.style.animation = 'none'; x.offsetHeight; x.style.animation = ''; });
+    $$('.kpis div, .viz-path span, .plat', pane).forEach(x => { x.style.animation = 'none'; x.offsetHeight; x.style.animation = ''; });
     ticks(pane);
   };
   const show = i => {
