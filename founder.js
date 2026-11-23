@@ -119,3 +119,54 @@ if (gh) {
   gh.innerHTML = html;
   onView(gh, () => gh.classList.add('go'), .3);
 }
+
+// ===== Results console =====
+const consoleEl = document.getElementById('console');
+if (consoleEl) {
+  const tabs = $$('.ctab', consoleEl), panes = $$('.pane', consoleEl);
+  let cur = 0, auto = !reduce, timer, started = false;
+  const renderLine = el => {
+    const W = 520, H = 210, pad = 26;
+    const pts = []; for (let k = 0; k <= 24; k++) { const x = k / 24; pts.push([pad + x * (W - pad * 2), H - pad - (Math.pow(x, 2.1) * 0.92 + 0.03 * Math.sin(x * 9) * x) * (H - pad * 2.4)]); }
+    const d = 'M' + pts.map(p => p.map(n => n.toFixed(1)).join(',')).join(' L');
+    const [ex, ey] = pts[pts.length - 1];
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(248,203,70,.35)"/><stop offset="1" stop-color="rgba(248,203,70,0)"/></linearGradient></defs>
+      ${[0.25, 0.5, 0.75].map(f => `<line class="gl" x1="${pad}" x2="${W - pad}" y1="${H * f}" y2="${H * f}"/>`).join('')}
+      <path class="area" d="${d} L${ex},${H - pad} L${pad},${H - pad} Z"/><path class="ln" d="${d}"/>
+      <text class="from" x="${pad}" y="${H - pad - 10}">${el.dataset.from}</text>
+      <g class="end"><circle cx="${ex}" cy="${ey}" r="9" fill="#F8CB46"/><circle cx="${ex}" cy="${ey}" r="18" fill="none" stroke="#F8CB46" stroke-opacity=".4" stroke-width="2"/><text class="big" x="${ex - 26}" y="${ey + 66}" text-anchor="end">${el.dataset.to}</text></g>
+      <text class="ax" x="${pad}" y="${H - 4}">${el.dataset.x0}</text><text class="ax" x="${W - pad}" y="${H - 4}" text-anchor="end">${el.dataset.x1}</text></svg>`;
+  };
+  const renderDots = el => {
+    const n = +el.dataset.n, total = +el.dataset.total;
+    el.style.gridTemplateColumns = `repeat(${el.dataset.cols},1fr)`;
+    el.innerHTML = '<i></i>'.repeat(total);
+    const dots = [...el.children];
+    dots.slice(0, n).forEach((d, k) => setTimeout(() => d.classList.add('lit'), reduce ? 0 : 200 + k * Math.min(45, 1400 / n)));
+  };
+  const renderFunnel = el => {
+    const steps = JSON.parse(el.dataset.steps);
+    el.innerHTML = steps.map(([v, l]) => `<div class="fb"><div class="fill"></div><div class="lbl"><b>${v}</b><span>${l}</span></div></div>`).join('');
+    requestAnimationFrame(() => setTimeout(() => [...el.querySelectorAll('.fill')].forEach((f, k) => { f.style.transitionDelay = k * .25 + 's'; f.style.width = steps[k][2] + '%'; }), 60));
+  };
+  const renderRing = el => { el.innerHTML = `<svg viewBox="0 0 170 170"><circle class="rb" cx="85" cy="85" r="70"/><circle class="rf" cx="85" cy="85" r="70"/><text x="85" y="93">${el.dataset.label}</text></svg>`; };
+  const ticks = pane => $$('[data-tick]', pane).forEach(el => {
+    if (reduce) return; const end = +el.dataset.tick, t0 = performance.now();
+    const f = t => { const k = Math.min(1, (t - t0) / 1400); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); }; requestAnimationFrame(f);
+  });
+  const paint = pane => {
+    $$('.viz-line', pane).forEach(renderLine); $$('.viz-dots', pane).forEach(renderDots);
+    $$('.viz-funnel', pane).forEach(renderFunnel); $$('.viz-ring', pane).forEach(renderRing);
+    $$('.kpis div, .viz-path span', pane).forEach(x => { x.style.animation = 'none'; x.offsetHeight; x.style.animation = ''; });
+    ticks(pane);
+  };
+  const show = i => {
+    cur = i;
+    tabs.forEach((t, k) => { t.classList.toggle('on', k === i); t.classList.toggle('auto', auto && k === i); t.setAttribute('aria-selected', k === i); });
+    panes.forEach((p, k) => p.classList.toggle('on', k === i));
+    paint(panes[i]);
+  };
+  const loop = () => { clearInterval(timer); if (auto) timer = setInterval(() => show((cur + 1) % panes.length), 7000); };
+  tabs.forEach((t, k) => t.addEventListener('click', () => { auto = false; clearInterval(timer); show(k); }));
+  onView(consoleEl, () => { if (!started) { started = true; show(0); loop(); } }, .3);
+}

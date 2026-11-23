@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230A3D2F'/%3E%3Ctext x='28' y='47' font-family='Arial Black,Arial' font-weight='900' font-size='40' text-anchor='middle' fill='%23F8CB46'%3EP%3C/text%3E%3Cpath d='M44 12h9v9M53 12l-10 10' stroke='%23fff' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css?v=6">
-<link rel="stylesheet" href="founder.css?v=6">
+<link rel="stylesheet" href="founder.css?v=8">
 </head>
 <body class="fx">
 
@@ -74,43 +74,53 @@
   <div class="wrap">
     <span class="kicker">Results where she led marketing</span>
     <h2>The numbers speak.</h2>
-    <div class="bento">
-      <article class="bx big reveal">
-        <div class="bxhead"><span class="wmk">Savera</span><span class="since">Digital growth strategist · Nov 2025 to Sep 2026</span></div>
-        <div class="nums n3">
-          <div><strong data-count="18" data-suffix="K">18K</strong><span>Instagram followers, from zero</span></div>
-          <div><strong data-count="1" data-suffix="M+">1M+</strong><span>organic reach</span></div>
-          <div><strong data-count="33">33</strong><span>Blinkit dark stores in 30 days</span></div>
-          <div><strong data-count="40" data-prefix="₹" data-suffix="L+">₹40L+</strong><span>franchise revenue</span></div>
-          <div><strong data-count="130" data-suffix="+">130+</strong><span>leads at ₹98 per lead</span></div>
-          <div><strong data-count="3">3</strong><span>stores launched</span></div>
+    <div class="console" id="console">
+      <div class="ctabs" role="tablist">
+        <button class="ctab on" data-p="0"><b>Savera</b><span>Growth strategist</span><i></i></button>
+        <button class="ctab" data-p="1"><b>StepAhead</b><span>Head of Marketing</span><i></i></button>
+        <button class="ctab" data-p="2"><b>CoLab</b><span>Marketing engineer</span><i></i></button>
+        <button class="ctab" data-p="3"><b>Riga</b><span>Launch</span><i></i></button>
+        <button class="ctab" data-p="4"><b>Gini's</b><span>Client store</span><i></i></button>
+      </div>
+      <div class="cpanel">
+        <div class="pane on">
+          <div class="phead"><span class="wmk">Savera</span><span class="since">Digital growth strategist · Nov 2025 to Sep 2026</span></div>
+          <div class="pviz">
+            <div class="vcard wide"><small>Instagram followers</small><div class="viz-line" data-to="18K" data-from="0" data-x0="Nov 2025" data-x1="Sep 2026"></div></div>
+            <div class="vcard"><small>Blinkit dark stores, first 30 days</small><div class="viz-dots" data-n="33" data-total="33" data-cols="11"></div><div class="vfoot"><b class="vbig" data-tick="33">33</b><span>live in <b class="vday" data-tick="30">30</b> days</span></div></div>
+          </div>
+          <div class="kpis"><div><strong>₹40L+</strong><span>franchise revenue</span></div><div><strong>1M+</strong><span>organic reach</span></div><div><strong>130+</strong><span>leads at ₹98 each</span></div><div><strong>3</strong><span>stores launched</span></div></div>
         </div>
-      </article>
-      <article class="bx reveal">
-        <div class="bxhead"><span class="wmk">StepAhead</span><span class="since">Head of Marketing · now</span></div>
-        <div class="nums">
-          <div><strong data-count="200" data-suffix="+">200+</strong><span>demo sign-ups</span></div>
-          <div><strong data-count="15" data-suffix="+">15+</strong><span>workshops &amp; demos</span></div>
-          <div><strong data-count="32">32</strong><span>post calendar, one brain</span></div>
-          <div><strong data-count="10" data-suffix="+">10+</strong><span>people mentored</span></div>
+        <div class="pane">
+          <div class="phead"><span class="wmk">StepAhead</span><span class="since">Head of Marketing &amp; mentor · now</span></div>
+          <div class="pviz">
+            <div class="vcard wide"><small>From sign-up to builder</small><div class="viz-funnel" data-steps='[["200+","demo sign-ups",100],["15+","workshops & demos",62],["10+","people mentored to build with AI",44]]'></div></div>
+            <div class="vcard"><small>Content calendar, one brain</small><div class="viz-dots sq" data-n="32" data-total="35" data-cols="7"></div><div class="vfoot"><b class="vbig" data-tick="32">32</b><span>posts planned and made</span></div></div>
+          </div>
         </div>
-      </article>
-      <article class="bx reveal">
-        <div class="bxhead"><span class="wmk">CoLab</span><span class="since">Marketing engineer · now</span></div>
-        <div class="nums">
-          <div><strong data-count="50">50</strong><span>posts planned a quarter</span></div>
-          <div><strong data-count="35">35</strong><span>masterclass sign-ups</span></div>
+        <div class="pane">
+          <div class="phead"><span class="wmk">CoLab</span><span class="since">Forward-deployed marketing engineer · now</span></div>
+          <div class="pviz">
+            <div class="vcard wide"><small>One quarter of posts</small><div class="viz-dots sq" data-n="50" data-total="52" data-cols="13"></div><div class="vfoot"><b class="vbig" data-tick="50">50</b><span>posts planned for the quarter</span></div></div>
+            <div class="vcard"><small>Masterclass sign-ups</small><div class="viz-dots ppl" data-n="35" data-total="35" data-cols="7"></div><div class="vfoot"><b class="vbig" data-tick="35">35</b><span>people signed up</span></div></div>
+          </div>
+          <div class="kpis"><div><strong>AI</strong><span>workflows for SMEs &amp; NGOs</span></div><div><strong>1</strong><span>Work OS logging every decision</span></div></div>
         </div>
-        <div class="bxtag">AI workflows for SMEs &amp; NGOs</div>
-      </article>
-      <article class="bx riga reveal">
-        <div class="bxhead"><span class="wmk">Riga</span><span class="since">Launched · @wear.riga</span></div>
-        <div class="nums n1"><div><strong data-count="3.2" data-suffix="K+">3.2K+</strong><span>followers for a new jewellery label</span></div></div>
-      </article>
-      <article class="bx gini reveal">
-        <div class="bxhead"><span class="wmk">Gini's</span><span class="since">Client · online store</span></div>
-        <div class="nums n1"><div><strong data-count="97" data-suffix="+">97+</strong><span>pieces listed, ordered in one tap</span></div></div>
-      </article>
+        <div class="pane">
+          <div class="phead"><span class="wmk">Riga</span><span class="since">Launched from scratch · @wear.riga</span></div>
+          <div class="pviz">
+            <div class="vcard wide"><small>Instagram followers</small><div class="viz-line" data-to="3.2K+" data-from="0" data-x0="Launch" data-x1="Sep 2026"></div></div>
+            <div class="vcard rcard"><small>A brand-new label</small><div class="viz-ring" data-label="0 → 3.2K"></div><div class="vfoot"><span>everyday jewellery, built from day one</span></div></div>
+          </div>
+        </div>
+        <div class="pane">
+          <div class="phead"><span class="wmk">Gini's Boutique</span><span class="since">Client · from a WhatsApp group to an online store</span></div>
+          <div class="pviz">
+            <div class="vcard wide"><small>Pieces on the shelf</small><div class="viz-dots shop" data-n="97" data-total="98" data-cols="14"></div><div class="vfoot"><b class="vbig" data-tick="97">97</b><span>pieces listed online</span></div></div>
+            <div class="vcard"><small>How a customer buys</small><div class="viz-path"><span>📍 Find on Maps</span><span>👗 Browse</span><span>💬 Order on WhatsApp</span></div><div class="vfoot"><b class="vbig">1</b><span>tap to order</span></div></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="brainrow">
       <span class="kicker">Agentic brains she has built</span>
@@ -236,7 +246,7 @@
       <div class="tile2 reveal"><span class="ico">🤖</span><h3>Builds your AI tools</h3><p>WhatsApp replies, stock alerts and a simple dashboard that saves you hours.</p></div>
       <div class="tile2 reveal"><span class="ico">📊</span><h3>Reports in rupees</h3><p>Every Friday: orders, sales, ad cost and profit. No jargon.</p></div>
     </div>
-    <div class="chips2"><span><b>🗣️</b> Hindi · Bengali · English · Urdu</span><span><b>🎓</b> MBA + PGPDM, Bengal Institute of Business Studies</span><span><b>🎓</b> BA English Honours</span></div>
+    <div class="chips2"><span><b>🗣️</b> Hindi · Bengali · English · Urdu</span><span><b>🎓</b> MBA + PGPDM, Bengal Institute of Business Studies</span></div>
   </div>
 </section>
 
@@ -258,6 +268,6 @@
   </div>
 </footer>
 <div class="mbar" id="mbar" aria-hidden="true"><a href="founders.html" class="mb2">← Founders</a><a href="index.html#audit" class="btn btn-y">Talk to Tamanna</a></div>
-<script src="founder.js?v=6"></script>
+<script src="founder.js?v=8"></script>
 </body>
 </html>
