@@ -3,8 +3,23 @@ const nav = document.querySelector('.nav');
 addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), { passive: true });
 const burger = document.getElementById('burger');
 const links = document.getElementById('links');
-burger.addEventListener('click', () => links.classList.toggle('open'));
-links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+const setMenu = open => {
+  links.classList.toggle('open', open);
+  burger.classList.toggle('x', open);
+  document.body.classList.toggle('locked', open);
+  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+};
+burger.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+// Mobile bottom bar: show after the hero, hide when the audit form is on screen
+const mbar = document.getElementById('mbar');
+const hero = document.querySelector('.hero');
+const audit = document.getElementById('audit');
+let pastHero = false, atAudit = false;
+const syncBar = () => mbar.classList.toggle('show', pastHero && !atAudit);
+new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; syncBar(); }).observe(hero);
+new IntersectionObserver(([e]) => { atAudit = e.isIntersecting; syncBar(); }, { threshold: 0.15 }).observe(audit);
 
 // Reveal on scroll
 const io = new IntersectionObserver(entries => {
