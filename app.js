@@ -125,3 +125,21 @@ const PROBLEMS = [
   // start when the section scrolls into view
   new IntersectionObserver(([e], o) => { if (e.isIntersecting) { show(0); loop(); o.disconnect(); } }, { threshold: .3 }).observe(body);
 })();
+
+// Growth tree: draw when in view
+(() => {
+  const t = document.getElementById('tree');
+  if (!t) return;
+  const svg = document.getElementById('roots'), paths = svg.querySelectorAll('path');
+  const draw = () => {
+    const tb = t.getBoundingClientRect(), rc = t.querySelector('.rootcard').getBoundingClientRect();
+    const x0 = rc.right - tb.left - 4, y0 = rc.top + rc.height / 2 - tb.top;
+    t.querySelectorAll('.lane').forEach((ln, k) => {
+      const lb = ln.getBoundingClientRect(), x1 = lb.left - tb.left - 8, y1 = lb.top - tb.top + 44, mx = (x0 + x1) / 2;
+      paths[k].setAttribute('d', `M${x0},${y0} C${mx},${y0} ${mx},${y1} ${x1},${y1}`);
+      const L = paths[k].getTotalLength(); paths[k].style.strokeDasharray = L; if (!t.classList.contains('go')) paths[k].style.strokeDashoffset = L;
+    });
+  };
+  draw(); addEventListener('resize', draw);
+  new IntersectionObserver(([e], o) => { if (e.isIntersecting) { t.classList.add('go'); paths.forEach(p => p.style.strokeDashoffset = 0); o.disconnect(); } }, { threshold: .08 }).observe(t);
+})();
